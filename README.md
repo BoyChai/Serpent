@@ -5,3 +5,4 @@
 Serpent -h  
 -u 指定URL地址  
 -c 指定线程  
+-t 指定请求类型 get 或者 post
