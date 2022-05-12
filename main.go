@@ -9,4 +9,5 @@ import (
 func main() {
 	command.Args()
 	control.Wg.Wait()
+	//blast.TCPBlast()
 }
