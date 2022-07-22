@@ -7,7 +7,7 @@ import (
 	"strings"
 )
 
-//发起请求
+// Request 发起请求
 func Request(url string, Concurrent int, RequestType string, RequestQuantity *int64, Success *int64) error {
 	switch RequestType {
 	case "get":

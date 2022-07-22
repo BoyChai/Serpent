@@ -22,6 +22,8 @@ func Args() {
 	//blastflag(args[2:])
 	case "sniff":
 		sniffflag(args[2:])
+	case "mail":
+		mailflag(args[2:])
 	case help[0]:
 		config.Help()
 	case help[1]:

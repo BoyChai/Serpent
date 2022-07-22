@@ -28,6 +28,8 @@ Options:
         Use HTTP mode
   sniff
         Sniff port
+  mail
+        Mail attack
   help
         View help information
 `)

@@ -2,6 +2,7 @@ package command
 
 import (
 	ht "Serpent/ability/http"
+	mail2 "Serpent/ability/mail"
 	sniff2 "Serpent/ability/sniff"
 	"Serpent/command/judge"
 	"flag"
@@ -100,4 +101,23 @@ func sniffflag(args []string) {
 	}
 	sniff2.RunTCPSniff(*host, ports, *thread)
 
+}
+
+func mailflag(args []string) {
+	//邮件攻击
+	mail := flag.NewFlagSet("mail", flag.ExitOnError)
+	//定义help内容
+	mail.Usage = func() {
+		fmt.Println("   _____                            _   \n  / ____|                          | |  \n | (___   ___ _ __ _ __   ___ _ __ | |_ \n  \\___ \\ / _ | '__| '_ \\ / _ | '_ \\| __|\n  ____) |  __| |  | |_) |  __| | | | |_ \n |_____/ \\___|_|  | .__/ \\___|_| |_|\\__|\n                  | |                   \n                  |_|                   ")
+		fmt.Println("Options:\n")
+		mail.PrintDefaults()
+	}
+
+	var smtp = mail.String("s", "", "smtp host: SMTP server address")
+	var port = mail.Int("p", 25, "port: SMTP host port")
+	var target = mail.String("m", "", "mail: Target mailbox")
+	var thread = mail.Int("t", 10, "thread: The higher the value, the better the effect and the higher the loss performance. The default is 6\n\n")
+
+	mail.Parse(args)
+	mail2.GarbageMail(*smtp, *target, *port, *thread)
 }
